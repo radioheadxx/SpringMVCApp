@@ -1,18 +1,30 @@
 package mvc.model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "users")
 public class User {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private long id;
+    @Column(name = "name")
     private String name;
+    @Column(name = "surname")
     private String surname;
+    @Column(name = "email")
+    private String email;
 
     public User() {
     }
 
-    public User(long id, String name, String surname) {
+    public User(long id, String name, String surname, String email) {
         this.id = id;
         this.name = name;
         this.surname = surname;
+        this.email = email;
     }
 
     public long getId() {
@@ -27,6 +39,9 @@ public class User {
         return surname;
     }
 
+    public String getEmail() {
+        return email;
+    }
 
     public void setId(long id) {
         this.id = id;
@@ -40,6 +55,9 @@ public class User {
         this.surname = surname;
     }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     @Override
     public String toString() {
@@ -47,6 +65,7 @@ public class User {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
+                ", email='" + email + '\'' +
                 '}';
     }
 }

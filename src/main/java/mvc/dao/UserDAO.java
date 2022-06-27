@@ -1,8 +1,9 @@
 package mvc.dao;
 
-import org.springframework.stereotype.Component;
+import mvc.model.User;
 
-@Component
-public class UserDAO {
+import java.util.List;
 
+public interface UserDAO {
+    public List<User> getAllUsers();
 }
