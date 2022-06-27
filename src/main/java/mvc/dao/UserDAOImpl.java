@@ -2,6 +2,7 @@ package mvc.dao;
 
 import javax.persistence.*;
 import mvc.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
