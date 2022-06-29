@@ -2,7 +2,6 @@ package mvc.dao;
 
 import javax.persistence.*;
 import mvc.model.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,8 +14,27 @@ public class UserDAOImpl implements UserDAO{
     private EntityManager entityManager;
 
     @Override
-    @Transactional
     public List<User> getAllUsers() {
-        return entityManager.createQuery("FROM User", User.class).getResultList();
+        return entityManager.createQuery("from User", User.class).getResultList();
+    }
+
+    @Override
+    public void saveUser(User user) {
+        entityManager.persist(user);
+    }
+
+    @Override
+    public User updateUser(User user) {
+        return entityManager.merge(user);
+    }
+
+    @Override
+    public void deleteUser(Long id) {
+        entityManager.remove(entityManager.find(User.class, id));
+    }
+
+    @Override
+    public User findById(Long id) {
+        return entityManager.find(User.class, id);
     }
 }

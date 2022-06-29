@@ -1,10 +1,10 @@
-package mvc.dao;
+package mvc.service;
 
 import mvc.model.User;
 
 import java.util.List;
 
-public interface UserDAO {
+public interface UserService {
     public List<User> getAllUsers();
     public void saveUser(User user);
     public User updateUser(User user);

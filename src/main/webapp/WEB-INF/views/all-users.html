@@ -1,23 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>info</title>
+    <title>users info</title>
 </head>
 <body>
-<h2>All users</h2>
-<table>
+<br>
+<h1>All users</h1>
+<table border="1">
     <tr>
+        <th>Id</th>
         <th>Name</th>
         <th>Surname</th>
-        <th>email</th>
+        <th>Email</th>
     </tr>
-        <tr th:each="user : ${allUs}">
-            <td>${user.name}</td>
-            <td>${user.surname}</td>
-            <td>${user.email}</td>
-        </tr>
+    <tbody>
+    <tr th:each="user : ${allUs}">
+        <td th:utext="${user.id}"></td>
+        <td th:utext="${user.name}"></td>
+        <td th:utext="${user.surname}"></td>
+        <td th:utext="${user.email}"></td>
+        <td><a th:href="@{update/{user}(user=${user})}">Edit</a></td>
+        <td><a th:href="@{delete/{id}(id=${user.id})}">Delete</a></td>
+    </tr>
+    </tbody>
+    <p><a href="create">Create user</a></p>
 </table>
-
+<br>
 </body>
 </html>
+
